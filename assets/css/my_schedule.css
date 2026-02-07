@@ -1,0 +1,43 @@
+.schedule-table { width: 100%; border-collapse: collapse; margin-top: 20px; table-layout: fixed; }
+.schedule-table th, .schedule-table td { border: 1px solid #e9ecef; padding: 8px; text-align: center; font-size: 12px; height: 35px; }
+.schedule-table th { background-color: #f2f2f2; font-weight: bold; }
+.time-column { width: 100px; background-color: #f9f9f9; font-weight: bold; }
+.class-cell { background-color: #e6f7ff; font-weight: bold; vertical-align: middle; border-left: 4px solid var(--primary); }
+.class-cell small { font-size: 11px; color: #333; display: block; font-weight: normal; }
+@media (max-width: 992px) {
+    .schedule-table { font-size: 10px; }
+    .schedule-table th, .schedule-table td { padding: 4px; }
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+.schedule-header-info div { margin-bottom: 5px; }
+.schedule-header-info strong { color: var(--primary); }
+
+.subject-legend { margin-top: 2rem; }
+.subject-legend h4 { margin-bottom: 1rem; }
+.subject-legend-table { width: 100%; border-collapse: collapse; }
+.subject-legend-table th, .subject-legend-table td { text-align: left; padding: 10px; border-bottom: 1px solid #e9ecef; }
+.subject-legend-table th { background-color: #f8f9fa; }
+.color-swatch { display: inline-block; width: 15px; height: 15px; border-radius: 3px; margin-right: 10px; vertical-align: middle; }
+
+@media print {
+    body, .container { background: #fff; display: block; }
+    .sidebar, .header, .schedule-header-actions { display: none; }
+    .main-content { padding: 0; }
+    .card { box-shadow: none; border: 1px solid #ddd; }
+    .schedule-header { margin-bottom: 1rem; padding-bottom: 0.5rem; }
+    .schedule-table { margin-top: 1rem; }
+    .subject-legend { 
+        margin-top: 1.5rem; 
+        page-break-before: auto;
+        page-break-inside: avoid;
+    }
+    .subject-legend-table td, .subject-legend-table th { padding: 6px; }
+}

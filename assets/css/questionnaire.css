@@ -1,0 +1,31 @@
+/* Questionnaire Styles */
+.questionnaire-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.questionnaire-table th,
+.questionnaire-table td {
+    border: 1px solid #e0e0e0;
+    padding: 10px 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.questionnaire-table th {
+    background-color: #f8f9fa;
+}
+
+.questionnaire-table .statement-col {
+    text-align: left;
+    width: 50%;
+}
+
+.questionnaire-table .category-row td {
+    background-color: #eaf2f8;
+    font-weight: bold;
+    text-align: left;
+    color: var(--primary);
+}

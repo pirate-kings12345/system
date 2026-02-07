@@ -1,0 +1,77 @@
+:root {
+    --watermark-opacity: 0.1;
+    --page-margin: 40px;
+    --logo-size: 86px;
+}
+/* On-screen table styles */
+.grade-table { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 2rem; }
+.grade-table th, .grade-table td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+.grade-table th { background-color: #f8f9fa; }
+.remarks-passed { color: #28a745; font-weight: bold; }
+.remarks-incomplete { color: #6c757d; font-weight: bold; }
+.remarks-failed { color: #dc3545; font-weight: bold; }
+
+/* Print report styles */
+.page-report {
+    position: relative;
+    padding: var(--page-margin);
+    background: #fff;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.page-report::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/ascotlogo.png');
+    background-repeat: no-repeat;
+    background-position: center top 110px;
+    background-size: 70%;
+    opacity: var(--watermark-opacity);
+    z-index: 0;
+    pointer-events: none;
+}
+.report-content { position: relative; z-index: 2; }
+.report-logo {
+    position: absolute;
+    top: calc(var(--page-margin) - 12px);
+    left: calc(var(--page-margin) - 12px);
+    width: var(--logo-size);
+    height: var(--logo-size);
+    z-index: 3;
+}
+.report-logo img { width: 100%; height: auto; }
+.report-header { text-align: center; margin-bottom: 10px; }
+.report-header h3, .report-header h4, .report-header h2 { margin: 0; padding: 0; line-height: 1.2; }
+.info-table { width: 100%; margin-top: 18px; border-collapse: collapse; font-size: 14px; }
+.info-table td { padding: 4px 6px; vertical-align: top; }
+table.grades { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13.5px; }
+table.grades th, table.grades td { border: 1px solid #000; padding: 6px 8px; text-align: center; }
+.summary { margin-top: 12px; display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; }
+.summary .left { flex: 1 1 auto; }
+.summary .right { flex: 0 0 200px; text-align: right; font-size: 14px; }
+.report-footer { margin-top: 20px; font-size: 11px; color: #333; }
+
+/* Initially hide the print version */
+#print-version { display: none; }
+
+@media print {
+    body, .container { background: #fff; display: block; }
+    /* Hide everything except the print version */
+    .sidebar, .main-content .header, #on-screen-version { display: none; }
+    .main-content { padding: 0; }
+    #print-version { display: block; } /* Show the print version */
+    .page-report { 
+        margin: 0; 
+        padding: 12mm; 
+        box-shadow: none; 
+        border: none; 
+        page-break-after: always; 
+        /* Force browsers to print background images and colors */
+        -webkit-print-color-adjust: exact; 
+        print-color-adjust: exact;
+    }
+    .report-logo { top: 8mm; left: 8mm; }
+    .page-report::before { background-size: 70%; background-position: center top 95px; }
+    table.grades th, table.grades td { border-width: 0.8px; }
+}
